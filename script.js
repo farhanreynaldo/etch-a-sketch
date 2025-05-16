@@ -14,9 +14,12 @@ function createCanvas(size) {
     }
   }
 
+  let opacity = 0.1;
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => {
     box.addEventListener("mouseover", () => {
+      box.style.opacity = opacity;
+      opacity += 0.1;
       box.classList.add("active");
     });
   });
