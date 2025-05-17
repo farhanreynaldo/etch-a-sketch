@@ -1,4 +1,15 @@
 let size = 16;
+const buttonColor = document.querySelector("#buttonColor");
+const buttonOpt = document.querySelector("#buttonOpt");
+
+function randomColor() {
+  let palette = [];
+  for (let i = 0; i < 3; i++) {
+    let value = Math.floor(Math.random() * 255);
+    palette.push(value);
+  }
+  return `rgb(${palette[0]}, ${palette[1]}, ${palette[2]})`;
+}
 
 function createCanvas(size) {
   const canvas = document.querySelector(".canvas");
@@ -14,12 +25,15 @@ function createCanvas(size) {
     }
   }
 
-  let opacity = 0.1;
+  let opt = buttonOpt.checked ? 0.1 : 1;
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => {
     box.addEventListener("mouseover", () => {
-      box.style.opacity = opacity;
-      opacity += 0.1;
+      opt += 0.1;
+      box.style.opacity = opt;
+      if (buttonColor.checked) {
+        box.style.backgroundColor = randomColor();
+      }
       box.classList.add("active");
     });
   });
