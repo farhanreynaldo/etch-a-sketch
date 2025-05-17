@@ -20,7 +20,6 @@ function createCanvas(size) {
     for (let j = 0; j < size; j++) {
       const boxDiv = document.createElement("div");
       boxDiv.classList.add("box");
-      boxDiv.textContent = `${i * size + j}`;
       columnDiv.appendChild(boxDiv);
     }
   }
